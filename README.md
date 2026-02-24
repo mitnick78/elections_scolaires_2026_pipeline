@@ -147,6 +147,8 @@ ratio_eleves_par_classe = total_élèves / total_classes
 
 ## 👤 Auteur
 
-**Christophe** — Développeur & Data Engineer en formation
-- [GitHub](https://github.com/mitnick78)
-- [Réutilisation data.gouv.fr](https://www.data.gouv.fr)
+<p align="center">
+  Fait avec ❤️ pour le Challenge Data.gouv 2026.<br>
+  Architecturé et développé par <b>Christophe Millière</b>.<br>
+  <i>Projet Data Engineering | Challenge Data.gouv 2026</i>
+</p>

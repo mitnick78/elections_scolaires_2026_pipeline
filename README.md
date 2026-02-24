@@ -1,4 +1,8 @@
-# 🏫 Tensions Scolaires dans les Communes Françaises
+<div align="center">
+  <img src="images/logo-tension.png" width="300" alt="Carte des tensions scolaires"/>
+</div>
+
+# Tensions Scolaires dans les Communes Françaises
 ### Élections Municipales 2026 — Pipeline ETL
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)

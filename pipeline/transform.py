@@ -3,16 +3,27 @@ import requests
 import io
 from sqlalchemy import create_engine
 from tqdm import tqdm
+import time
 
 ENGINE = create_engine('postgresql://admin:admin123@localhost:5432/elections_scolaires')
 
-def geocode_batch(communes_batch):
+def geocode_batch(communes_batch, retries=3):
     csv_data = "q\n" + "\n".join(communes_batch)
-    response = requests.post(
-        "https://api-adresse.data.gouv.fr/search/csv/",
-        files={"data": ("communes.csv", csv_data.encode('utf-8'), "text/csv")}
-    )
-    return pd.read_csv(io.StringIO(response.text))
+    
+    for attempt in range(retries):
+        try:
+            response = requests.post(
+                "https://api-adresse.data.gouv.fr/search/csv/",
+                files={"data": ("communes.csv", csv_data.encode('utf-8'), "text/csv")},
+                timeout=30
+            )
+            return pd.read_csv(io.StringIO(response.text))
+        except Exception as e:
+            print(f"Tentative {attempt + 1}/{retries} échouée : {e}")
+            time.sleep(2)  # attend 2 secondes avant de réessayer
+    
+    print(f"Batch échoué après {retries} tentatives")
+    return pd.DataFrame()
 
 def transform():
     print("⏳ Transformation Bronze → Silver...")

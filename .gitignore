@@ -1,0 +1,13 @@
+# Données
+data/raw/*.csv
+data/processed/*.csv
+
+# Environnement virtuel
+.env_scolaire/
+.env_scolaire_pipeline/
+
+# Python
+__pycache__/
+*.pyc
+# OS
+.DS_Store

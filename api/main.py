@@ -11,7 +11,10 @@ app = FastAPI(
 # CORS API pour react
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:5173",  # Vite
+        "http://localhost:3000",  # Au cas où
+    ],
     allow_methods=["*"],
     allow_headers=["*"]
 )

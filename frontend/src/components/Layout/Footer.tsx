@@ -26,7 +26,7 @@ const Footer: FC = () => {
                 </a>
               </li>
               <li className="fr-footer__content-item">
-                <a className="fr-footer__content-link" href="https://github.com/ton-username" target="_blank" rel="noreferrer">
+                <a className="fr-footer__content-link" href="https://github.com/mitnick78/elections_scolaires_2026_pipeline" target="_blank" rel="noreferrer">
                   GitHub
                 </a>
               </li>

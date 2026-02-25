@@ -85,43 +85,61 @@ const Home: FC = () => {
         {loadingTop10 ? (
           <p>Chargement...</p>
         ) : (
-          <div className="fr-table fr-table--bordered">
-            <table>
-              <thead>
-                <tr>
-                  <th>Rang</th>
-                  <th>Commune</th>
-                  <th>Département</th>
-                  <th>Ratio élèves/classe</th>
-                  <th>Nb écoles</th>
-                  <th>Type</th>
-                  <th>Niveau</th>
-                </tr>
-              </thead>
-              <tbody>
-                {top10.map((commune, index) => (
-                  <tr key={index}>
-                    <td><strong>#{index + 1}</strong></td>
-                    <td>{commune.Commune}</td>
-                    <td>{commune.Département}</td>
-                    <td>
-                      <strong style={{ color: niveauCouleur[commune.niveau_tension] }}>
-                        {commune.ratio_eleves_par_classe.toFixed(1)}
-                      </strong>
-                    </td>
-                    <td>{commune.nb_ecoles}</td>
-                    <td>{commune.type_commune}</td>
-                    <td>
-                      <span style={{ color: niveauCouleur[commune.niveau_tension] }}>
-                        {commune.niveau_tension}
-                      </span>
-                    </td>
+          <div style={{ display: 'flex', justifyContent: 'center' }}> 
+            <div className="fr-table fr-table--bordered">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rang</th>
+                    <th>Commune</th>
+                    <th>Département</th>
+                    <th>Ratio élèves/classe</th>
+                    <th>Nb écoles</th>
+                    <th>Type</th>
+                    <th>Niveau</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {top10.map((commune, index) => (
+                    <tr key={index}>
+                      <td><strong>#{index + 1}</strong></td>
+                      <td>{commune.Commune}</td>
+                      <td>{commune.Département}</td>
+                      <td>
+                        <strong style={{ color: niveauCouleur[commune.niveau_tension] }}>
+                          {commune.ratio_eleves_par_classe.toFixed(1)}
+                        </strong>
+                      </td>
+                      <td>{commune.nb_ecoles}</td>
+                      <td>{commune.type_commune}</td>
+                      <td>
+                        <span style={{ color: niveauCouleur[commune.niveau_tension] }}>
+                          {commune.niveau_tension}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
+      </div>
+      {/* Limites méthodologiques */}
+      <div className="fr-notice fr-notice--info fr-mt-4w">
+        <div className="fr-container">
+          <div className="fr-notice__body">
+            <p className="fr-notice__title">Limites méthodologiques</p>
+            <p className="fr-notice__desc">
+              Les élèves <strong>ULIS</strong> (Unités Localisées pour l'Inclusion Scolaire) et 
+              <strong> UEEA</strong> (Unités d'Enseignement Élémentaire Autisme) sont inclus dans 
+              le calcul du ratio, ce qui peut légèrement minorer la tension réelle dans certaines communes. 
+              Les zones <strong>REP/REP+</strong> (Réseaux d'Éducation Prioritaire) ne sont pas analysées 
+              séparément. Le géocodage couvre <strong>87% des communes</strong> — les 13% restants 
+              ne sont pas affichés sur la carte.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   )

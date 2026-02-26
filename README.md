@@ -24,11 +24,11 @@ Architecture **Medallion complète** — Bronze, Silver et Gold sont stockés di
 
 ## Résultats Clés
 
-- 📊 **10 093 communes** analysées (avec 5+ classes)
-- 📈 **Ratio moyen national** : 21.87 élèves/classe
-- 🔴 **632 communes** en forte tension (≥ 25 élèves/classe)
-- 🟠 **4 817 communes** en tension modérée
-- 🗺️ Carte interactive avec clustering par niveau de tension
+- **10 093 communes** analysées (avec 5+ classes)
+- **Ratio moyen national** : 21.87 élèves/classe
+- **632 communes** en forte tension (≥ 25 élèves/classe)
+- **4 817 communes** en tension modérée
+- Carte interactive avec clustering par niveau de tension
 
 ---
 

@@ -2,7 +2,7 @@
   <img src="images/logo-tension.png" width="300" alt="Carte des tensions scolaires"/>
 </div>
 
-# 🏫 Tensions Scolaires dans les Communes Françaises
+# Tensions Scolaires dans les Communes Françaises
 ### Élections Municipales 2026 — Full Stack Data
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
@@ -12,7 +12,7 @@
 ![Docker](https://img.shields.io/badge/Docker-✓-blue)
 ![Data](https://img.shields.io/badge/Source-data.gouv.fr-orange)
 
-## 📋 Description
+## Description
 
 Projet indépendant d'analyse des tensions scolaires dans les communes françaises à l'approche des élections municipales 2026. Il identifie les communes où le ratio élèves/classe est le plus élevé, révélant les besoins en matière d'infrastructure scolaire.
 
@@ -22,7 +22,7 @@ Architecture **Medallion complète** — Bronze, Silver et Gold sont stockés di
 
 ---
 
-## 🎯 Résultats Clés
+## Résultats Clés
 
 - 📊 **10 093 communes** analysées (avec 5+ classes)
 - 📈 **Ratio moyen national** : 21.87 élèves/classe
@@ -105,7 +105,7 @@ Documentation Swagger disponible sur `http://localhost:8000/docs`
 
 ---
 
-## 🚀 Lancer le Projet
+## Lancer le Projet
 
 ### Prérequis
 - Docker & Docker Compose
@@ -148,10 +148,10 @@ ratio_eleves_par_classe = total_élèves / total_classes
 ### Niveaux de tension
 | Niveau | Ratio | Couleur |
 |--------|-------|---------|
-| Forte tension | ≥ 25 élèves/classe | 🔴 |
-| Tension modérée | 22-25 élèves/classe | 🟠 |
-| Normal | 18-22 élèves/classe | 🟢 |
-| Sous-capacité | < 18 élèves/classe | 🔵 |
+| Forte tension | ≥ 25 élèves/classe 
+| Tension modérée | 22-25 élèves/classe
+| Normal | 18-22 élèves/classe |
+| Sous-capacité | < 18 élèves/classe
 
 ### Classification des communes
 | Type | Critère |
@@ -188,7 +188,15 @@ ratio_eleves_par_classe = total_élèves / total_classes
 
 ---
 
-<p align="center">
+## Résultat final
+
+<div align="center">
+  <img src="images/home.png" style="display:block;" width="500" alt="Carte des tensions scolaires"/>
+  <img src="images/dep.png" style="display:block; margin:10px 0px" width="500" alt="Carte des tensions scolaires"/>
+  <img src="images/map.png" style="display:block" width="500" alt="Carte des tensions scolaires"/>
+</div>
+
+<p align="center" style="display:block; margin-top:20px">
   Fait avec ❤️ pour le Challenge Data.gouv 2026.<br>
   Architecturé et développé par <b>Christophe Millière</b>.<br>
   <i>Projet Data Engineering | Challenge Data.gouv 2026</i>

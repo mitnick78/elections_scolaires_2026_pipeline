@@ -3,6 +3,7 @@ import { useStats, useTop10 } from "../hooks/useCommunes";
 import TensionBarChart from "../components/Charts/BarChart";
 import CommuneTable from "../components/CommuneTable/CommuneTable";
 import { TENSION_COLORS } from "../constants/tensionColors";
+import StatCard from "../components/Card/StatCard";
 
 const Home: FC = () => {
   const { stats, loading, error } = useStats();
@@ -26,52 +27,20 @@ const Home: FC = () => {
 
       {/* Stats nationales */}
       <div className="fr-grid-row fr-grid-row--gutters fr-mb-4w">
-        <div className="fr-col-12 fr-col-md-3">
-          <div className="fr-card fr-card--shadow">
-            <div className="fr-card__body">
-              <div className="fr-card__content">
-                <h2 className="fr-card__title">{stats?.totalCommunes}</h2>
-                <p className="fr-card__desc">Communes analysées</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="fr-col-12 fr-col-md-3">
-          <div className="fr-card fr-card--shadow">
-            <div className="fr-card__body">
-              <div className="fr-card__content">
-                <h2 className="fr-card__title">{stats?.averageRatio}</h2>
-                <p className="fr-card__desc">Ratio moyen national</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="fr-col-12 fr-col-md-3">
-          <div
-            className="fr-card fr-card--shadow"
-            style={{ borderTop: "3px solid #e1000f" }}
-          >
-            <div className="fr-card__body">
-              <div className="fr-card__content">
-                <h2 className="fr-card__title">{stats?.highTension}</h2>
-                <p className="fr-card__desc">Communes en forte tension</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="fr-col-12 fr-col-md-3">
-          <div
-            className="fr-card fr-card--shadow"
-            style={{ borderTop: "3px solid #e67e22" }}
-          >
-            <div className="fr-card__body">
-              <div className="fr-card__content">
-                <h2 className="fr-card__title">{stats?.moderateTension}</h2>
-                <p className="fr-card__desc">Communes en tension modérée</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <StatCard value={stats?.totalCommunes} label="Communes analysées" />
+        <StatCard value={stats?.averageRatio} label="Ratio moyen national" />
+
+        <StatCard
+          value={stats?.highTension}
+          label="Communes en forte tension"
+          borderColor="#e1000f"
+        />
+
+        <StatCard
+          value={stats?.moderateTension}
+          label="Communes en tension modérée"
+          borderColor="#e67e22"
+        />
       </div>
 
       {/* Graphique */}

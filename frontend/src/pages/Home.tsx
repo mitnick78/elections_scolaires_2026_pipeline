@@ -1,19 +1,17 @@
 import type { FC } from "react";
-import { useStats, useTop10 } from "../hooks/useCommunes";
-import TensionBarChart from "../components/Charts/BarChart";
-import CommuneTable from "../components/CommuneTable/CommuneTable";
-import { TENSION_COLORS } from "../constants/tensionColors";
-import StatCard from "../components/Card/StatCard";
+import { useStats, useTop10 } from "@/hooks/useCommunes";
+import TensionBarChart from "@/components/Charts/BarChart";
+import CommuneTable from "@/components/CommuneTable/CommuneTable";
+import { TENSION_COLORS } from "@/constants/tensionColors";
+import StatCard from "@/components/Card/StatCard";
+import AsyncWrapper from "@/components/AsyncWrapper/AsyncWrapper";
 
 const Home: FC = () => {
   const { stats, loading, error } = useStats();
   const { top10, loading: loadingTop10 } = useTop10();
 
-  if (loading) return <p className="fr-text">Chargement...</p>;
-  if (error) return <p className="fr-text">{error}</p>;
-
   return (
-    <div>
+    <AsyncWrapper loading={loading} error={error}>
       {/* Titre */}
       <div className="fr-mb-4w">
         <h1 className="fr-h1 fr-grid-row fr-grid-row--center">
@@ -58,15 +56,9 @@ const Home: FC = () => {
         <h2 className="fr-h2 fr-grid-row fr-grid-row--center">
           Top 10 communes les plus en tension
         </h2>
-        {loadingTop10 ? (
-          <p>Chargement...</p>
-        ) : (
-          <div className="fr-grid-row fr-grid-row--center">
-            <div className="fr-col-8">
-              <CommuneTable colors={TENSION_COLORS} communes={top10} showRang />
-            </div>
-          </div>
-        )}
+        <AsyncWrapper loading={loadingTop10} error={null}>
+          <CommuneTable colors={TENSION_COLORS} communes={top10} showRang />
+        </AsyncWrapper>
       </div>
       {/* Limites méthodologiques */}
       <div className="fr-notice fr-notice--info fr-mt-4w">
@@ -87,7 +79,7 @@ const Home: FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </AsyncWrapper>
   );
 };
 

@@ -1,10 +1,11 @@
 import type { FC } from "react";
 import { useState, useEffect } from "react";
-import { useDepartements } from "../hooks/useCommunes";
-import { getCommunesByDepartement } from "../services/api";
-import type { Commune, Department } from "../types";
-import CommuneTable from "../components/CommuneTable/CommuneTable";
-import { TENSION_COLORS } from "../constants/tensionColors";
+import { useDepartements } from "@/hooks/useCommunes";
+import { getCommunesByDepartement } from "@/services/api";
+import type { Commune, Department } from "@/types";
+import CommuneTable from "@/components/CommuneTable/CommuneTable";
+import { TENSION_COLORS } from "@/constants/tensionColors";
+import AsyncWrapper from "@/components/AsyncWrapper/AsyncWrapper";
 
 const DepartementPage: FC = () => {
   const { departements, loading } = useDepartements();
@@ -37,13 +38,11 @@ const DepartementPage: FC = () => {
       <div className="fr-grid-row fr-grid-row--gutters">
         <div className="fr-col-12 fr-col-md-4">
           <h2 className="fr-h3">Départements</h2>
-          {loading ? (
-            <p>Chargement...</p>
-          ) : (
+          <AsyncWrapper loading={loading} error={null}>
             <div style={{ maxHeight: "600px", overflowY: "auto" }}>
               {departements.map((dept) => (
                 <div
-                  key={dept["code"]}
+                  key={dept.code}
                   className="fr-card fr-card--shadow fr-mb-1w"
                   style={{
                     cursor: "pointer",
@@ -71,22 +70,20 @@ const DepartementPage: FC = () => {
                 </div>
               ))}
             </div>
-          )}
+          </AsyncWrapper>
         </div>
 
         <div className="fr-col-12 fr-col-md-8">
           {currentDept && (
             <>
               <h2 className="fr-h3">Communes — {currentDept.name}</h2>
-              {loadingCommunes ? (
-                <p>Chargement...</p>
-              ) : (
+              <AsyncWrapper loading={loadingCommunes} error={null}>
                 <CommuneTable
                   colors={TENSION_COLORS}
                   communes={communes}
                   showDepartement
                 />
-              )}
+              </AsyncWrapper>
             </>
           )}
         </div>

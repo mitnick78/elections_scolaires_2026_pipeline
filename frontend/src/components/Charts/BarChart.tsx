@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-import type { Stats } from "../../types";
+import type { Stats } from "@/types";
 
 interface BarChartProps {
   stats: Stats;

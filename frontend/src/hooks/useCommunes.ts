@@ -5,7 +5,7 @@ import {
   getCommunesMap,
   getTop10,
   getDepartements,
-} from "../services/api";
+} from "@/services/api";
 
 export const useStats = () => {
   const [stats, setStats] = useState<Stats | null>(null);

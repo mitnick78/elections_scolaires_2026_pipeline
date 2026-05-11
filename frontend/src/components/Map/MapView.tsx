@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, CircleMarker, Popup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import L from "leaflet";
 
-import type { Commune } from "../../types";
+import type { Commune } from "@/types";
 import "leaflet/dist/leaflet.css";
 
 interface MapViewProps {

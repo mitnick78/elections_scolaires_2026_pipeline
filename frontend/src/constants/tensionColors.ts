@@ -1,4 +1,4 @@
-import type { TensionLevel } from "../types";
+import type { TensionLevel } from "@/types";
 
 export const TENSION_COLORS: Record<TensionLevel, string> = {
   "Forte tension": "#e3342f",

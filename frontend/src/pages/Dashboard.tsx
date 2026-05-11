@@ -1,9 +1,10 @@
-import type { FC } from 'react'
-import { useCommunesMap } from '../hooks/useCommunes'
-import MapView from '../components/Map/MapView'
+import type { FC } from "react";
+import { useCommunesMap } from "@/hooks/useCommunes";
+import MapView from "@/components/Map/MapView";
+import AsyncWrapper from "@/components/AsyncWrapper/AsyncWrapper";
 
 const Dashboard: FC = () => {
-  const { communes, loading, error } = useCommunesMap()
+  const { communes, loading, error } = useCommunesMap();
 
   return (
     <div>
@@ -15,31 +16,37 @@ const Dashboard: FC = () => {
       {/* Légende */}
       <div className="fr-grid-row fr-grid-row--gutters fr-mb-2w">
         {[
-          { label: 'Forte tension (≥25)', color: '#e1000f' },
-          { label: 'Tension modérée (22-25)', color: '#e67e22' },
-          { label: 'Normal (18-22)', color: '#18753c' },
-          { label: 'Sous-capacité (<18)', color: '#0063cb' }
+          { label: "Forte tension (≥25)", color: "#e1000f" },
+          { label: "Tension modérée (22-25)", color: "#e67e22" },
+          { label: "Normal (18-22)", color: "#18753c" },
+          { label: "Sous-capacité (<18)", color: "#0063cb" },
         ].map(({ label, color }) => (
           <div key={label} className="fr-col-auto">
-            <span style={{
-              display: 'inline-block',
-              width: '12px',
-              height: '12px',
-              borderRadius: '50%',
-              backgroundColor: color,
-              marginRight: '6px'
-            }} />
+            <span
+              style={{
+                display: "inline-block",
+                width: "12px",
+                height: "12px",
+                borderRadius: "50%",
+                backgroundColor: color,
+                marginRight: "6px",
+              }}
+            />
             {label}
           </div>
         ))}
       </div>
 
       {/* Carte */}
-      {loading && <p>Chargement de la carte...</p>}
-      {error && <p>{error}</p>}
-      {!loading && !error && <MapView communes={communes} />}
+      <AsyncWrapper
+        loading={loading}
+        error={error}
+        loadingMessage="Chargement de la carte..."
+      >
+        <MapView communes={communes} />
+      </AsyncWrapper>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

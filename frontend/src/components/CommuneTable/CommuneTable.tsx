@@ -1,11 +1,4 @@
-interface CommuneData {
-  name: string;
-  department?: string;
-  studentClassRatio: number;
-  schoolCount: number;
-  communeType: string;
-  tensionLevel: string;
-}
+import type { CommuneData } from "@/types";
 
 interface CommuneTableProps {
   communes: CommuneData[];

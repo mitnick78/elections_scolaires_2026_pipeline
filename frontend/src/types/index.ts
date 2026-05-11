@@ -36,3 +36,12 @@ export type TensionLevel =
   | "Normal"
   | "Sous-capacité";
 export type TypeCommune = "Urbaine" | "Périurbaine" | "Rurale";
+
+export type CommuneData = Pick<
+  Commune,
+  "name" | "studentClassRatio" | "schoolCount"
+> & {
+  department?: string;
+  communeType: string;
+  tensionLevel: string;
+};
